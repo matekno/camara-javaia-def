@@ -11,7 +11,14 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const adminPassword = process.env.ADMIN_PASSWORD || 'MajonGuesher'
+    const adminPassword = process.env.ADMIN_PASSWORD
+    
+    if (!adminPassword) {
+      return NextResponse.json(
+        { error: 'Configuración del servidor incompleta' },
+        { status: 500 }
+      )
+    }
 
     if (password !== adminPassword) {
       return NextResponse.json(
