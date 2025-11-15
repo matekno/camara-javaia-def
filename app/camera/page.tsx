@@ -128,9 +128,9 @@ export default function CameraPage() {
 
           switch (filterKey) {
             case 'rojo': // Naranja
-              data[i] = avg + (r * 0.7)
-              data[i + 1] = avg + (g * 0.4)
-              data[i + 2] = b * 0.2
+              data[i] = avg + (r * 0.8)
+              data[i + 1] = avg * 0.5 + (g * 0.3)
+              data[i + 2] = b * 0.15
               break
             case 'rosa':
               data[i] = avg + (r * 0.6)
