@@ -127,30 +127,30 @@ export default function CameraPage() {
           const avg = (r + g + b) / 3
 
           switch (filterKey) {
-            case 'rojo':
-              data[i] = avg + (r * 0.5)
-              data[i + 1] = g * 0.3
-              data[i + 2] = b * 0.3
+            case 'rojo': // Naranja
+              data[i] = avg + (r * 0.7)
+              data[i + 1] = avg + (g * 0.4)
+              data[i + 2] = b * 0.2
               break
             case 'rosa':
               data[i] = avg + (r * 0.6)
               data[i + 1] = g * 0.4
               data[i + 2] = avg + (b * 0.5)
               break
-            case 'amarillo':
-              data[i] = avg + (r * 0.6)
-              data[i + 1] = avg + (g * 0.6)
-              data[i + 2] = b * 0.2
+            case 'amarillo': // Verde
+              data[i] = r * 0.3
+              data[i + 1] = avg + (g * 0.7)
+              data[i + 2] = g * 0.4
               break
             case 'gris':
               data[i] = avg
               data[i + 1] = avg
               data[i + 2] = avg
               break
-            case 'celeste':
-              data[i] = r * 0.4
-              data[i + 1] = avg + (g * 0.5)
-              data[i + 2] = avg + (b * 0.6)
+            case 'celeste': // Azul
+              data[i] = r * 0.3
+              data[i + 1] = g * 0.4
+              data[i + 2] = avg + (b * 0.7)
               break
           }
         }
