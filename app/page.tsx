@@ -68,16 +68,6 @@ export default function Home() {
       </form>
 
       {error && <div className="error">{error}</div>}
-
-      <div style={{ marginTop: '30px', paddingTop: '20px', borderTop: '1px solid #e0e0e0' }}>
-        <p style={{ color: '#888', marginBottom: '10px' }}>¿Administrador?</p>
-        <button 
-          onClick={() => router.push('/admin')}
-          style={{ background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' }}
-        >
-          Acceder al Panel de Admin
-        </button>
-      </div>
     </div>
   )
 }

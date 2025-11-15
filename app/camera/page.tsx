@@ -97,12 +97,14 @@ export default function CameraPage() {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
 
-    if (!ctx) return
+    if (!ctx || !video.videoWidth || !video.videoHeight) return
 
     canvas.width = video.videoWidth
     canvas.height = video.videoHeight
 
     const drawFrame = () => {
+      if (!video.videoWidth || !video.videoHeight) return
+      
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
 
       const filterKey = currentColor.toLowerCase()
@@ -154,6 +156,13 @@ export default function CameraPage() {
     drawFrame()
   }
 
+  const handleRefresh = async () => {
+    const userId = localStorage.getItem('userId')
+    if (userId) {
+      await fetchGameState(userId)
+    }
+  }
+
   const handleLogout = () => {
     localStorage.removeItem('userId')
     localStorage.removeItem('username')
@@ -183,9 +192,14 @@ export default function CameraPage() {
         </div>
       )}
 
-      <button onClick={handleLogout} className="logout-btn">
-        Cerrar Sesión
-      </button>
+      <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
+        <button onClick={handleRefresh} style={{ flex: 1, background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }}>
+          Actualizar Estado
+        </button>
+        <button onClick={handleLogout} className="logout-btn" style={{ flex: 1 }}>
+          Cerrar Sesión
+        </button>
+      </div>
     </div>
   )
 }
