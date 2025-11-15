@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 export default function CameraPage() {
   const [currentColor, setCurrentColor] = useState<string>('Ninguno')
   const [currentRound, setCurrentRound] = useState<number>(1)
-  const [username, setUsername] = useState<string>('')
+  const [displayName, setDisplayName] = useState<string>('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -17,14 +17,14 @@ export default function CameraPage() {
 
   useEffect(() => {
     const userId = localStorage.getItem('userId')
-    const storedUsername = localStorage.getItem('username')
+    const storedDisplayName = localStorage.getItem('displayName')
 
-    if (!userId || !storedUsername) {
+    if (!userId || !storedDisplayName) {
       router.push('/')
       return
     }
 
-    setUsername(storedUsername)
+    setDisplayName(storedDisplayName)
     fetchGameState(userId)
     startCamera()
 
@@ -166,6 +166,7 @@ export default function CameraPage() {
   const handleLogout = () => {
     localStorage.removeItem('userId')
     localStorage.removeItem('username')
+    localStorage.removeItem('displayName')
     router.push('/')
   }
 
@@ -174,7 +175,7 @@ export default function CameraPage() {
       <h1>Cámara Javaia</h1>
 
       <div className="info-box">
-        <p><strong>Usuario:</strong> {username}</p>
+        <p><strong>Identidad:</strong> {displayName}</p>
         <p><strong>Ronda:</strong> {currentRound}</p>
         <div className={`current-filter filter-${currentColor.toLowerCase()}`}>
           Filtro actual: {currentColor}

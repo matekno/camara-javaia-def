@@ -42,5 +42,10 @@ console.log('\n🎉 ¡Configuración completada exitosamente!\n');
 console.log('Para iniciar la aplicación, ejecutar:');
 console.log('  npm run dev\n');
 console.log('La aplicación estará disponible en: http://localhost:3000\n');
-console.log('Usuarios disponibles: ALEF, BET, GUIMEL, DALET, VAV\n');
+console.log('Identidades disponibles:');
+console.log('  - Puro instinto');
+console.log('  - Repetir patrones');
+console.log('  - Una cicatriz');
+console.log('  - ¿Qué ves cuando te ves?');
+console.log('  - ¿Imitar o copiar?\n');
 

@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { USER_DISPLAY_NAMES, getInternalName } from '@/lib/userNames'
 
 export default function Home() {
-  const [username, setUsername] = useState('')
+  const [displayName, setDisplayName] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const router = useRouter()
@@ -15,12 +16,13 @@ export default function Home() {
     setLoading(true)
 
     try {
+      const internalName = getInternalName(displayName)
       const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username: username.toUpperCase() }),
+        body: JSON.stringify({ username: internalName }),
       })
 
       const data = await response.json()
@@ -28,6 +30,7 @@ export default function Home() {
       if (response.ok) {
         localStorage.setItem('userId', data.userId)
         localStorage.setItem('username', data.username)
+        localStorage.setItem('displayName', displayName)
         router.push('/camera')
       } else {
         setError(data.error || 'No se pudo iniciar sesión')
@@ -46,19 +49,19 @@ export default function Home() {
       
       <form onSubmit={handleLogin}>
         <div className="form-group">
-          <label htmlFor="username">Nombre de Usuario</label>
+          <label htmlFor="username">Seleccionar Identidad</label>
           <select
             id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
             required
           >
-            <option value="">Seleccionar usuario...</option>
-            <option value="ALEF">ALEF</option>
-            <option value="BET">BET</option>
-            <option value="GUIMEL">GUIMEL</option>
-            <option value="DALET">DALET</option>
-            <option value="VAV">VAV</option>
+            <option value="">Seleccionar...</option>
+            {Object.values(USER_DISPLAY_NAMES).map((name) => (
+              <option key={name} value={name}>
+                {name}
+              </option>
+            ))}
           </select>
         </div>
 

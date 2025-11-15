@@ -37,11 +37,12 @@ npm run dev
 
 ## Características
 
-- Sistema de usuarios con rotaciones de colores
+- Sistema de 5 identidades con rotaciones de colores
 - Filtros de cámara en tiempo real
 - Panel de administración
 - Sincronización automática cada 20 segundos
 - Diseño responsive (mobile-first)
+- Nombres codificados para mantener anonimato
 
 ## Estructura
 

@@ -2,6 +2,13 @@ const { PrismaClient } = require('@prisma/client')
 
 const prisma = new PrismaClient()
 
+// Nombres internos (en la app se muestran con nombres codificados):
+// ALEF -> "Puro instinto"
+// BET -> "Repetir patrones"
+// GUIMEL -> "Una cicatriz"
+// DALET -> "¿Qué ves cuando te ves?"
+// VAV -> "¿Imitar o copiar?"
+
 const users = [
   {
     username: 'ALEF',
