@@ -13,6 +13,13 @@ npm install
 ```env
 DATABASE_URL="tu-url-de-base-de-datos"
 ADMIN_PASSWORD="tu-contraseña-admin"
+
+# Lugares por color (colores internos de la DB)
+LUGAR_ROJO="Pool"
+LUGAR_ROSA="Pileta"
+LUGAR_AMARILLO="Bar"
+LUGAR_GRIS="Escaleras"
+LUGAR_CELESTE="Pasillo de afuera"
 ```
 
 3. Configurar base de datos:

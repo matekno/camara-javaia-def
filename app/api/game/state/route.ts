@@ -37,9 +37,14 @@ export async function GET(request: NextRequest) {
       )
     }
 
+    // Obtener el lugar asociado al color desde las variables de entorno
+    const colorKey = rotation.color.toUpperCase()
+    const lugar = process.env[`LUGAR_${colorKey}`] || ''
+
     return NextResponse.json({
       currentRound: gameState.currentRound,
-      color: rotation.color
+      color: rotation.color,
+      lugar: lugar
     })
   } catch (error) {
     console.error('Error obteniendo estado:', error)

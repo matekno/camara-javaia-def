@@ -9,6 +9,7 @@ export default function CameraPage() {
   const [displayColor, setDisplayColor] = useState<string>('Ninguno')
   const [colorCssClass, setColorCssClass] = useState<string>('ninguno')
   const [currentRound, setCurrentRound] = useState<number>(1)
+  const [lugar, setLugar] = useState<string>('')
   const [displayName, setDisplayName] = useState<string>('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
@@ -61,6 +62,7 @@ export default function CameraPage() {
       if (response.ok) {
         setCurrentRound(data.currentRound)
         setCurrentColor(data.color)
+        setLugar(data.lugar || '')
       } else {
         setError(data.error || 'No se pudo obtener el estado del juego')
       }
@@ -185,6 +187,7 @@ export default function CameraPage() {
       <div className="info-box">
         <p><strong>Identidad:</strong> {displayName}</p>
         <p><strong>Ronda:</strong> {currentRound}</p>
+        {lugar && <p><strong>Lugar:</strong> {lugar}</p>}
         <div className={`current-filter filter-${colorCssClass}`}>
           Filtro actual: {displayColor}
         </div>
