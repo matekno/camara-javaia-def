@@ -2,9 +2,12 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
+import { getDisplayColor, getColorCssClass } from '@/lib/colorNames'
 
 export default function CameraPage() {
   const [currentColor, setCurrentColor] = useState<string>('Ninguno')
+  const [displayColor, setDisplayColor] = useState<string>('Ninguno')
+  const [colorCssClass, setColorCssClass] = useState<string>('ninguno')
   const [currentRound, setCurrentRound] = useState<number>(1)
   const [displayName, setDisplayName] = useState<string>('')
   const [error, setError] = useState<string | null>(null)
@@ -44,6 +47,11 @@ export default function CameraPage() {
       applyFilter()
     }
   }, [currentColor, loading])
+
+  useEffect(() => {
+    setDisplayColor(getDisplayColor(currentColor))
+    setColorCssClass(getColorCssClass(currentColor))
+  }, [currentColor])
 
   const fetchGameState = async (userId: string) => {
     try {
@@ -177,8 +185,8 @@ export default function CameraPage() {
       <div className="info-box">
         <p><strong>Identidad:</strong> {displayName}</p>
         <p><strong>Ronda:</strong> {currentRound}</p>
-        <div className={`current-filter filter-${currentColor.toLowerCase()}`}>
-          Filtro actual: {currentColor}
+        <div className={`current-filter filter-${colorCssClass}`}>
+          Filtro actual: {displayColor}
         </div>
       </div>
 

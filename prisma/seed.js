@@ -9,6 +9,13 @@ const prisma = new PrismaClient()
 // DALET -> "¿Qué ves cuando te ves?"
 // VAV -> "¿Imitar o copiar?"
 
+// Colores internos (en la app se muestran traducidos):
+// Rojo -> Naranja
+// Rosa -> Rosa
+// Amarillo -> Verde
+// Gris -> Gris
+// Celeste -> Azul
+
 const users = [
   {
     username: 'ALEF',

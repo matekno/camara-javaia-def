@@ -347,9 +347,9 @@ video {
 }
 
 /* Estilos de colores para los filtros */
-.filter-rojo {
-  background-color: rgba(245, 87, 108, 0.3);
-  color: #f5576c;
+.filter-naranja {
+  background-color: rgba(251, 146, 60, 0.3);
+  color: #f97316;
 }
 
 .filter-rosa {
@@ -357,9 +357,9 @@ video {
   color: #ff69b4;
 }
 
-.filter-amarillo {
-  background-color: rgba(254, 225, 64, 0.3);
-  color: #f59e0b;
+.filter-verde {
+  background-color: rgba(134, 239, 172, 0.3);
+  color: #22c55e;
 }
 
 .filter-gris {
@@ -367,8 +367,8 @@ video {
   color: #6b7280;
 }
 
-.filter-celeste {
-  background-color: rgba(135, 206, 250, 0.3);
-  color: #0ea5e9;
+.filter-azul {
+  background-color: rgba(96, 165, 250, 0.3);
+  color: #3b82f6;
 }
 
