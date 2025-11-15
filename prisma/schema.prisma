@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "prisma+postgres://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqd3RfaWQiOjEsInNlY3VyZV9rZXkiOiJza19BdG4xOUo3bU85SXJ4Sm55bjZobVoiLCJhcGlfa2V5IjoiMDFLQTQzTUVSM1pFRTNQUUZSN01RUjdIUU4iLCJ0ZW5hbnRfaWQiOiJhMmIwYzlmMDYzOTNjMGJhYTZiNzhhNDI0MzhmNWZiYTAwMzQ4NGUxMDQ0OTIyYWI3OWYyNTExNzVlNmJmNjU3IiwiaW50ZXJuYWxfc2VjcmV0IjoiODBkYWViOGEtOGIyYi00NDJlLWExY2MtZjA0YTc5YWI0NTE5In0.LTFwdwPSMDypIbtvI8cSwECCCfJWlepZYvkuHgmjjCg"
+}
+
+model GameState {
+  id           Int      @id @default(autoincrement())
+  currentRound Int      @default(1)
+  updatedAt    DateTime @updatedAt
+
+  @@map("game_state")
+}
+
+model User {
+  id        Int        @id @default(autoincrement())
+  username  String     @unique
+  rotations Rotation[]
+
+  @@map("users")
+}
+
+model Rotation {
+  id       Int    @id @default(autoincrement())
+  userId   Int
+  round    Int
+  color    String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, round])
+  @@map("rotations")
+}
+
